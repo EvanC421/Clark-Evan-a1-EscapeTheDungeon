@@ -1,1 +1,3 @@
 # Clark-Evan-a1-EscapeTheDungeon
+Welcome to the dungeon! Here's how to play.
+First, read the text that the program displays. It will tell you about your surroundings and what choices you can make. The objective of the game is to escape the dungeon alive. To make a choice, simply type out what you want to do. Make sure to include key words about the decision (for example, "red" for a red door). Each time you clear a room, one point is added to the score. You can see your score every time you die or escape the dungeon. Good luck!

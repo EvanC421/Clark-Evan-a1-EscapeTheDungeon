@@ -73,18 +73,18 @@ if (firstHallway.Contains("left"))
         if (waterTunnel.Contains("shallow")) {
             //Player now has to choose between a tunnel and a door
             score += 1;
-            Console.WriteLine("You wade though the water until you find some stairs that lead you into a new room.\nYou can go into a door or down a tunnel");
+            Console.WriteLine("You wade though the water until you find some stairs that lead you into a new room.\nYou can go into a door or down a tunnel.");
             string doorTunnelRoom = Console.ReadLine().ToLower();
             if (doorTunnelRoom.Contains("door")) {
                 //Player enters statue room, has to choose which button to press
                 score += 1;
-                Console.WriteLine("You go through the dopor and enter a room with a giant dragon statue.\nThere are two buttons at the bottom, on has a flame on it, the other has a wave on it. Which do you press?");
+                Console.WriteLine("You go through the door and enter a room with a giant dragon statue.\nThere are two buttons at the bottom, on has a flame on it, the other has a wave on it. Which do you press?");
                 string statueRoom = Console.ReadLine().ToLower();
                 if (statueRoom.Contains("wave"))
                 {
                     //The player presses the correct button and the ending is achieved.
                     score += 1;
-                    Console.WriteLine("You press the wave button. Suddenly, the floor drops out from beneath you, and you fall into a stream of water. You are then swept out of the dungeon, and you swim to a small peaceful island.\nTHE END!\nFinal score: "+score);
+                    Console.WriteLine("You press the wave button. Suddenly, the floor drops out from beneath you, and you fall into a stream of water. You are then swept out of the dungeon, and you swim to a small peaceful island.\nYOU WIN! THE END!\nFinal score: "+score);
                 }
                 else if (statueRoom.Contains("flame"))
                 {
@@ -155,9 +155,113 @@ else if (firstHallway.Contains("right"))
 {
     //player walks down right hallway, chooses between red and green door
     score += 1;
+    Console.WriteLine("You walk down the right hallway and come across two doors.\nYou can go in a red door or a green door.");
+    string rightHallway = Console.ReadLine().ToLower();
+    if (rightHallway.Contains("green"))
+    {
+        //The player enters the green door and enters leaf room
+        score += 1;
+        Console.WriteLine("You enter the green door and emerge into a room with a sleeping gaurd.\nYou can go left, on a path full of leaves, or right, on a path with stones.");
+        string leafRoom = Console.ReadLine().ToLower();
+        if (leafRoom.Contains("right"))
+        {
+            //Player enters vine room
+            score += 1;
+            Console.WriteLine("You carefully sneak past the gaurd on the stone path.\nYou then enter a room with a tall wall. reaching down from the wall are two vines. The left one has mushrooms on it, the middle one has flowers, and the right on has thorns.");
+            string vineRoom = Console.ReadLine().ToLower();
+            if (vineRoom.Contains("middle"))
+            {
+                //Player enters plant room
+                score += 1;
+                Console.WriteLine("You climb the vine with flowers and enter a room with a giant plant. It's growing right in front of the exit. It has giant teeth and looks hungry.\nThere are two valves that lead to pipes above the plant. One is purple and has the letter H on it, the other is greenand has an F.");
+                string plantRoom = Console.ReadLine().ToLower();
+                if (plantRoom.Contains("purple"))
+                {
+                    //Player kills plant, ending is achieved
+                    score += 1;
+                    Console.WriteLine("You turn the valve and purple liquid falls onto the plant, causing to wither instantly. The H must have stood for herbicide! You walk out of the dungeon and onto an open field.\nYOU WIN! THE END!\nFinal score: "+score);
+                }
+                else if (plantRoom.Contains("green"))
+                {
+                    Console.WriteLine("YOU DIED! You turned the valve and green liquid hit the plant, causing to grow rapidly and eat you. The G must have stood for fertalizer!\nScore: " + score);
+                }
+                else
+                {
+                    Console.WriteLine("Error: input is invalid. Please try again.\nScore: " + score);
+                }
+            }
+            else if (vineRoom.Contains("left"))
+            {
+                Console.WriteLine("YOU DIED! the fungal vine broke and you fell to your doom.\nScore: "+score);
+            }
+            else if (vineRoom.Contains("right"))
+            {
+                Console.WriteLine("YOU DIED! The thorny vine injected lethal venom into your hands as you grabbed onto it.\nScore: "+score);
+            }
+            else
+            {
+                Console.WriteLine("Error: input is invalid. Please try again.\nScore: " + score);
+            }
+
+        }
+        else if (leafRoom.Contains("left"))
+        {
+            Console.WriteLine("YOU DIED! As you walked through the leaves, you stepped on a stick under the leaves causing the gaurd to wake up and kill you.\nScore: "+score);
+        }
+        else
+        {
+            Console.WriteLine("Error: input is invalid. Please try again.\nScore: " + score);
+        }
+    }
+    else if (rightHallway.Contains("red"))
+    {
+        //Player enters gear room and decides to jump on big or small gear
+        score += 1;
+        Console.WriteLine("You enter the red door and are now in a room full of gears.\nTo get to the next door, you'll have to jump on a big gear or a small gear.");
+        string gearRoom = Console.ReadLine().ToLower();
+        if (gearRoom.Contains("big")) {
+            //Player enters lava room, decides to swing on rope, jump on rocks or cross bridge.
+            score += 1;
+            Console.WriteLine("You safely cross on the big gear and enter a room with a pit of lava.\nTo cross, you can swing on a rope, jump on some rocks, or cross a bridge.");
+            string lavaRoom = Console.ReadLine().ToLower();
+            if (lavaRoom.Contains("rock"))
+            {
+                //Player enters riddle room
+                score += 1;
+                Console.WriteLine("You quickly jump across the rocks, avoiding the lava. You then enter a room with a sphinx statue.\n'What is 43 - 17?' I asks.\nEnter your answer. (Must be a number).");
+                int riddle = int.Parse(Console.ReadLine());
+                if (riddle == 26)
+                {
+                    //Player answers riddle correctly, ending is achieved
+                    score += 1;
+                    Console.WriteLine("'Correct' The sphinx replies. The sphinx suddenly rumbles to the side and an exit appears. You leave the dungeon through a cave tunnel.\nYOU WIN! THE END!\nFinal Score: "+ score);
+                }
+                else if (riddle != 26)
+                {
+                    Console.WriteLine("YOU DIED! The answer was incorrect, and the ceiling lowered and crushed you.\nScore: "+score);
+                }
+                else
+                {
+                    Console.WriteLine("Error: input is invalid. Please try again.\nScore: " + score);
+                }
+            }
+        }
+        else if (gearRoom.Contains("small"))
+        {
+            Console.WriteLine("YOU DIED! The small gear became loose and you fell into lava.\nScore: "+score);
+        }
+        else
+        {
+            Console.WriteLine("Error: input is invalid. Please try again.\nScore: " + score);
+        }
+    }
+    else
+    {
+        Console.WriteLine("Error: input is invalid. Please try again.\nScore: " + score);
+    }
 
 }
-else
-{
+else 
+{ 
     Console.WriteLine("Error: input is invalid. Please try again.\nScore: " + score);
 }
